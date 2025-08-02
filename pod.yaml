@@ -1,0 +1,17 @@
+# static-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+spec:
+  containers:
+    - name: app
+      image: busybox
+      command: [ "sleep", "3600" ]
+      volumeMounts:
+        - mountPath: /data
+          name: static-volume
+  volumes:
+    - name: static-volume
+      persistentVolumeClaim:
+        claimName: static-pvc

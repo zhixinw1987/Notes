@@ -1,0 +1,14 @@
+# static-pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: static-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""  # Important: must match PVC exactly
+  hostPath:
+    path: /mnt/data       # This must exist on the node!
